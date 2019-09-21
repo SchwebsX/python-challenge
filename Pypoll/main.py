@@ -13,33 +13,23 @@ with open(election_data, newline='') as csvfile:
     votercounter = 0
     candidatelist = []
     candidateandvote = {}
-    candidatesvotes = 0
 
 #runs through each line of the file    
     for row in csvreader:
         #adds one to vote counter
-        #candidatelist.append(row[2])
         votercounter = votercounter + 1
         #add name to candidate list if it is a new name
         if (row[2]) not in candidateandvote:
+            #making a list of the candidates
             candidatelist.append(row[2])
-            
+            #making the candidate and vote count dictionary
             candidateandvote[row[2]] = +int(0)
-        for names in candidateandvote:
-            if (names in candidateandvote):
-                candidateandvote[names] += 1
-            #else:
-                #candidateandvote[names] = 0
-    
-    
-    #trying to count elements in a dictionary
-    
-
-        #else:
-            #addup[names] = 1
-    
-    #for key, value in addup.items():
-       # print("%d : %d"%(str(key, value))
+        else:
+            candidateandvote[row[2]] +=1
+        #looping through candidateandvote dict to add up votes
+    #for row in csvreader:   
+        #if (row[2]) in candidateandvote:
+            #candidateandvote[names] += 1
 
     print("Election Results")
     print("------------------------------------")
@@ -50,5 +40,4 @@ with open(election_data, newline='') as csvfile:
 
     print("------------------------------------")
     print("Winner:")
-    #print(candidate)
-    #print(candidateandvote)
+  
