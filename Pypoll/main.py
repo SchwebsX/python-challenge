@@ -26,17 +26,13 @@ with open(election_data, newline='') as csvfile:
             candidateandvote[row[2]] = +int(0)
         else:
             candidateandvote[row[2]] +=1
-        #looping through candidateandvote dict to add up votes
-    #for row in csvreader:   
-        #if (row[2]) in candidateandvote:
-            #candidateandvote[names] += 1
 
     print("Election Results")
     print("------------------------------------")
     print("Total Votes:" + str(votercounter))
     print("------------------------------------")
     for k, v in candidateandvote.items():
-        print(str(k)+ ":" + " " + str(v))
+        print(str(k)+ ":" + " " + str(round((int(v) / int(votercounter)*100),3)) + " " + (str(v)))
 
     print("------------------------------------")
     print("Winner:")
