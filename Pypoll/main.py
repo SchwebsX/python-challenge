@@ -13,6 +13,7 @@ with open(election_data, newline='') as csvfile:
     votercounter = 0
     candidatelist = []
     candidateandvote = {}
+    max_votes = 0
 
 #runs through each line of the file    
     for row in csvreader:
@@ -26,14 +27,15 @@ with open(election_data, newline='') as csvfile:
             candidateandvote[row[2]] = +int(0)
         else:
             candidateandvote[row[2]] +=1
+    
+    max_votes = max(candidateandvote, key=lambda x: candidateandvote.get(x))
 
     print("Election Results")
     print("------------------------------------")
     print("Total Votes:" + str(votercounter))
     print("------------------------------------")
     for k, v in candidateandvote.items():
-        print(str(k)+ ":" + " " + str(round((int(v) / int(votercounter)*100),3)) + " " + (str(v)))
+        print(str(k)+ ":" + " " + str(round((int(v) / int(votercounter)*100),3)) + "%  " + (str(v)))
 
     print("------------------------------------")
-    print("Winner:")
-  
+    print("Winner:" + str(max_votes))
